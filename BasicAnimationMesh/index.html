@@ -1,106 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-    body {
-        margin: 0;
-        overflow: hidden;
-        font-family: 'Inter', sans-serif;
-        background-color: #000;
-    }
-    #ui-overlay {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index: 100;
-        pointer-events: none;
-    }
-    .glass-panel {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        padding: 24px;
-        color: white;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        max-width: 300px;
-    }
-    h1 {
-        margin: 0 0 12px 0;
-        font-size: 1.25rem;
-        font-weight: 600;
-        letter-spacing: -0.02em;
-        background: linear-gradient(135deg, #fff 0%, #aaa 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-    .feature-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 12px;
-        font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.8);
-    }
-    .key-badge {
-        background: rgba(255, 255, 255, 0.15);
-        padding: 2px 8px;
-        border-radius: 4px;
-        font-family: monospace;
-        font-weight: 600;
-        margin: 0 4px;
-        color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    .btn-snap {
-        margin-top: 8px;
-        padding: 10px 20px;
-        background: #fff;
-        color: #000;
-        border: none;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 0.85rem;
-        cursor: pointer;
-        pointer-events: auto;
-        transition: all 0.2s ease;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-    .btn-snap:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
-        background: #f0f0f0;
-    }
-    .btn-snap:active {
-        transform: translateY(0);
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+        }
+
+        #ui-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            z-index: 100;
+            pointer-events: none;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            color: white;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            width: 100%;
+            max-width: 240px;
+            pointer-events: auto;
+        }
+
+        @media (max-width: 480px) {
+            #ui-overlay {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+            }
+
+            .glass-panel {
+                padding: 16px;
+                max-width: 200px;
+            }
+
+            h1 {
+                font-size: 1.1rem;
+            }
+
+            .feature-item {
+                font-size: 0.8rem;
+            }
+        }
+
+        h1 {
+            margin: 0 0 12px 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .key-badge {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: 600;
+            margin: 0 4px;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-snap {
+            margin-top: 8px;
+            padding: 10px 20px;
+            background: #fff;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-snap:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+            background: #f0f0f0;
+        }
+
+        .btn-snap:active {
+            transform: translateY(0);
+        }
+    </style>
 </head>
+
 <body>
-<div id="ui-overlay">
-    <div class="glass-panel">
-        <h1>Lumina Canvas</h1>
-        <div class="feature-item">
-            <span>Drag the mesh to interact</span>
+    <div id="ui-overlay">
+        <div class="glass-panel">
+            <h1>Lumina Canvas</h1>
+            <div class="feature-item">
+                <span>Drag the mesh to interact</span>
+            </div>
+            <div class="feature-item">
+                <span>Press <span class="key-badge">S</span> key to snap</span>
+            </div>
+            <button id="snap-btn" class="btn-snap">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                </svg>
+                Snap Scene
+            </button>
         </div>
-        <div class="feature-item">
-            <span>Press <span class="key-badge">S</span> key to snap</span>
-        </div>
-        <button id="snap-btn" class="btn-snap">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            Snap Scene
-        </button>
     </div>
-</div>
-<script type="importmap">
+    <script type="importmap">
 {
 "imports": {
 "three": "https://cdn.jsdelivr.net/npm/three@0.174.0/build/three.module.js",
@@ -108,6 +149,7 @@
 }
 }
 </script>
-<script type="module" src="./index.js"></script>
+    <script type="module" src="./index.js"></script>
 </body>
+
 </html>
